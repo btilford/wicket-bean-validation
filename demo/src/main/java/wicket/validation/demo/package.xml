@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+    <entry key="person.name">Name</entry>
+    <entry key="address.lineOne">Address</entry>
+    <entry key="address.lineTwo">Address Line 2</entry>
+    <entry key="address.city">City</entry>
+    <entry key="address.region">State</entry>
+    <entry key="address.country">Country</entry>
+    <entry key="address.postalCode">Zip Code</entry>
+
+
+    <entry key="person.name.notNull">Name is required.</entry>
+
+
+    <entry key="address.lineOne.notNull">Address is required.</entry>
+    <entry key="address.city.notNull">City is required.</entry>
+    <entry key="address.region.notNull">State is required.</entry>
+    <entry key="address.country.notNull">Country is required.</entry>
+    <entry key="address.postalCode.notNull">Zip Code is required.</entry>
+    <entry key="address.postalCode.pattern">Invalid Zip Code.</entry>
+
+</properties>
