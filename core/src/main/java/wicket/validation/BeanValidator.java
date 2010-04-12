@@ -3,6 +3,8 @@ package wicket.validation;
 import org.apache.wicket.validation.IValidatable;
 import org.apache.wicket.validation.ValidationError;
 import org.apache.wicket.validation.validator.AbstractValidator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
@@ -10,7 +12,6 @@ import javax.validation.Validator;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.logging.Logger;
 
 
 /**
@@ -25,7 +26,7 @@ public class BeanValidator<T, V> extends AbstractValidator<V> {
     private final Class<?>[] groups;
     private final Class<T> modelType;
 
-    private static final Logger logger = Logger.getLogger(BeanValidator.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(BeanValidator.class.getName());
 
 
     /**
@@ -45,6 +46,7 @@ public class BeanValidator<T, V> extends AbstractValidator<V> {
 
     @Override
     protected void onValidate(IValidatable<V> validatable) {
+        logger.trace("BeanValidator.onValidate(" + validatable.getValue() + ")");
 
         //do the validation
         Set<ConstraintViolation<?>> violations = validateConstraints(validatable.getValue());
@@ -58,10 +60,12 @@ public class BeanValidator<T, V> extends AbstractValidator<V> {
             MessageInterpolator implementation and should just pass the key.
              */
             validationError.addMessageKey(violation.getMessageTemplate());
-            logger.fine(violation.getMessage());
+            logger.debug("validation error \"" + violation.getMessageTemplate() + "\"");
         }
         if (errors) {
             validatable.error(validationError);
+        } else {
+            logger.debug("No validation errors.");
         }
     }
 
@@ -73,7 +77,7 @@ public class BeanValidator<T, V> extends AbstractValidator<V> {
      * @return
      */
     Set<ConstraintViolation<V>> validateBean(final V value) {
-        assert getValidator() != null;
+        logger.trace("BeanValidator.validateBean(" + value + ")");
         return getValidator().validate(value, groups);
     }
 
@@ -85,6 +89,7 @@ public class BeanValidator<T, V> extends AbstractValidator<V> {
      * @return
      */
     Set<ConstraintViolation<T>> validateBeanProperty(final V value) {
+        logger.trace("BeanValidator.validateBeanProperty(" + value + "):propertyName=" + propertyName);
         return getValidator().validateValue(modelType, propertyName, value, groups);
     }
 
@@ -113,6 +118,11 @@ public class BeanValidator<T, V> extends AbstractValidator<V> {
      */
     protected Validator getValidator() {
         return Validation.buildDefaultValidatorFactory().getValidator();
+    }
+
+    @Override
+    public boolean validateOnNullValue() {
+        return true;
     }
 
     //-------------------------------------------------------------------------------------------------------
