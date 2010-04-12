@@ -9,10 +9,11 @@
 <span wicket:id="message">message will be here</span>
 
 <form wicket:id="person">
-    <div wicket:id="feedback"/>
-
 
     <h1>BeanValidator</h1>
+
+    <div wicket:id="feedback"/>
+
     <label for="name">
         <wicket:message key="person.name">Name</wicket:message>
     </label>
@@ -55,47 +56,49 @@
 
 
 <form wicket:id="formValidator">
-    <div wicket:id="feedback2"/>
-
 
     <h1>BeanFormValidator</h1>
+
+    <div wicket:id="feedback"/>
+
+
     <label for="name2">
         <wicket:message key="person.name">Name</wicket:message>
     </label>
-    <input wicket:id="name2" name="name2"/>
+    <input wicket:id="name" name="name2"/>
     <br/>
     <label for="address.lineOne2">
         <wicket:message key="address.lineOne">Address</wicket:message>
     </label>
-    <input wicket:id="address.lineOne2" name="address.lineOne2"/>
-    <input wicket:id="address.lineTwo2" name="address.lineTwo2"/>
+    <input wicket:id="address.lineOne" name="address.lineOne2"/>
+    <input wicket:id="address.lineTwo" name="address.lineTwo2"/>
     <br/>
 
     <label for="address.city2">
         <wicket:message key="address.city">City</wicket:message>
     </label>
-    <input wicket:id="address.city2" name="address.city2"/>
+    <input wicket:id="address.city" name="address.city2"/>
     <br/>
 
     <label for="address.region2">
         <wicket:message key="address.region">State</wicket:message>
     </label>
-    <input wicket:id="address.region2" name="address.region2"/>
+    <input wicket:id="address.region" name="address.region2"/>
     <br/>
 
     <label for="address.country2">
         <wicket:message key="address.country">Country</wicket:message>
     </label>
-    <input wicket:id="address.country2" name="address.country2"/>
+    <input wicket:id="address.country" name="address.country2"/>
     <br/>
 
     <label for="address.postalCode2">
         <wicket:message key="address.postalCode">Zip Code</wicket:message>
     </label>
-    <input wicket:id="address.postalCode2" name="address.postalCode2"/>
+    <input wicket:id="address.postalCode" name="address.postalCode2"/>
     <br/>
 
-    <input wicket:id="submit2" type="submit" value="Submit"/>
+    <input wicket:id="submit" type="submit" value="Submit"/>
 </form>
 
 </body>

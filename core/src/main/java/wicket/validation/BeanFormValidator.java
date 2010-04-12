@@ -20,6 +20,8 @@ import java.util.Set;
  * To change this template use File | Settings | File Templates.
  */
 public class BeanFormValidator<T> extends AbstractFormValidator {
+    private static final long serialVersionUID = 1L;
+
     private static final Logger logger = LoggerFactory.getLogger(BeanFormValidator.class.getName());
     private final Class<?>[] groups;
     private final Class<T> modelType;
@@ -41,10 +43,10 @@ public class BeanFormValidator<T> extends AbstractFormValidator {
 
     @Override
     public void validate(Form<?> form) {
-        //crazy wicket wildcard generics
+        //crazy wicket wildcard generics ... Form<?> should be Form<T>
         if (modelType.isAssignableFrom(form.getModelObject().getClass())) {
-            Set<ConstraintViolation<T>> violations = validateValue((T) form.getModelObject());
-            for (ConstraintViolation<T> violation : violations) {
+            Set<ConstraintViolation<Object>> violations = validateValue(form.getModelObject());
+            for (ConstraintViolation<Object> violation : violations) {
                 form.error(new StringResourceModel(violation.getMessageTemplate(), form, null).getString());
                 logger.debug("validation error \"" + violation.getMessageTemplate() + "\"");
             }
@@ -55,7 +57,7 @@ public class BeanFormValidator<T> extends AbstractFormValidator {
 
     }
 
-    Set<ConstraintViolation<T>> validateValue(T value) {
+    Set<ConstraintViolation<Object>> validateValue(Object value) {
         return getValidator().validate(value, groups);
     }
 
@@ -71,4 +73,6 @@ public class BeanFormValidator<T> extends AbstractFormValidator {
     public static <T> BeanFormValidator<T> create(final Class<T> modelType, final Class<?>... groups) {
         return new BeanFormValidator<T>(modelType, groups);
     }
+
+
 }

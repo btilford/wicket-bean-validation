@@ -71,12 +71,12 @@ public class PropertyModelValidationListener implements IComponentOnBeforeRender
                         break;
                     }
                 }
-                logger.debug("Filter result ==" + apply);
+                logger.trace("Filter result ==" + apply);
             }
             apply = apply && (formComponent.getModel() instanceof AbstractPropertyModel);
 
         }
-        logger.debug("PropertyModelValidationListener.applyValidator == " + apply);
+        logger.trace("PropertyModelValidationListener.applyValidator == " + apply);
         return apply;
     }
 }
