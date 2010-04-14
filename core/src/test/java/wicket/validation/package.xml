@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <entry key="person.name.notNull">Person's name is required.</entry>
+    <entry key="person.areaCode.min">Area Code must be at least 1 digit.</entry>
+    <entry key="person.areaCode.max">Area Code cannot exceed 3 digits.</entry>
+    <entry key="person.phoneNumber.pattern">Phone Number must match the pattern '000-0000' or '0000000'.</entry>
+    <entry key="person.email.notNull">Online people need an email!</entry>
+    <entry key="person.email.pattern">Are you sure that's an email?</entry>
+</properties>

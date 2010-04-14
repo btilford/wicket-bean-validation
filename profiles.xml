@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profilesXml xmlns="http://maven.apache.org/PROFILES/1.0.0"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://maven.apache.org/PROFILES/1.0.0 http://maven.apache.org/xsd/profiles-1.0.0.xsd">
+    <profiles>
+        <profile>
+            <id>jboss-repo</id>
+            <!-- javax.validation isn't in central -->
+            <repositories>
+                <repository>
+                    <id>jboss</id>
+                    <url>http://repository.jboss.com/maven2/</url>
+                </repository>
+            </repositories>
+        </profile>
+        <profile>
+            <id>jre5</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <target.jre>1.5</target.jre>
+            </properties>
+        </profile>
+        <profile>
+            <id>jre6</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <target.jre>1.6</target.jre>
+            </properties>
+        </profile>
+    </profiles>
+</profilesXml>

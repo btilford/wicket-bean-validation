@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="core:war exploded">
+    <output-path>$PROJECT_DIR$/core/target/core-1.0-SNAPSHOT</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="core/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="core" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.apache.wicket:wicket:1.4.7" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.5.8" />
+          <element id="library" level="project" name="Maven: javax.validation:validation-api:1.0.0.GA" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
